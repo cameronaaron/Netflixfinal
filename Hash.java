@@ -1,5 +1,5 @@
-public class hash {
-    Node [] h = new Node [100];
+public class Hash {
+   customerNode [] h = new customerNode [1000];
    private int n;
 
 
@@ -15,7 +15,7 @@ public class hash {
             return null;
         }
         else {
-            int index = key % 7;
+            int index = key % 1000;
             Node temp = null;
             if (h[index].getKey() == key) {
                 return h[index];
@@ -38,7 +38,7 @@ public class hash {
         }
     }
     public void insert(Node newnode) {
-        int index = newnode.getKey() % 7;
+        int index = newnode.getKey() % 1000;
         n++;
         if (h[index] == null) {
             h[index] = newnode;
@@ -92,7 +92,7 @@ public class hash {
             }
     }
     public void printhastable(){
-        for (int i=0; i<7; i++){
+        for (int i=0; i<1000; i++){
             printchain(i);
         }
 
