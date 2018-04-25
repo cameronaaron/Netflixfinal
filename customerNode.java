@@ -35,14 +35,10 @@ public class Node {
 		CCN = CCN0;
 	}
 	
-	public int getCCN() {
+	public int getkey() {
 		return CCN;
 	}
-	
-	public int getKey() {
-		return (this.CCN%10000);
-	}
-	
+
 	public void setNext(Node next0) {
 		next = next0;
 	}
