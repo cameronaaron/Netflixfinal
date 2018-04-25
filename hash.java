@@ -1,5 +1,5 @@
 public class hash {
-    Node [] h = new Node [7];
+    Node [] h = new Node [100];
    private int n;
 
 
