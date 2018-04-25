@@ -32,7 +32,7 @@ public class movieNode{
 	public void setUniqID(int uniqID){
 		this.uniqID = uniqID;
 	}
-	public int popScore(){
+	public int getPopScore(){
 		return popScore;
 	}
 	public void popScore(int popScore){
