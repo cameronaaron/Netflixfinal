@@ -6,7 +6,7 @@
 
 //
 public class heap {
-    moveNode [] h = new movieNode [120];
+    movieNode [] h = new movieNode [120];
     private int n;
     private Node temp;
     public Heap() {
