@@ -10,7 +10,7 @@ public class customerNode {
 		name = name0;
 		email = email0;
 		ccn = ccn0;
-		
+		//unsure if customerNode[] is correct
 		customerNode []wishList = new customerNode [20];
 		
  		next = null;
