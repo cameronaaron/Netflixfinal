@@ -21,8 +21,8 @@ public class TestWishList {
 	    	System.out.println();
 	    	System.out.println(a.isEmpty());
 	    	while(!a.isEmpty()) {
-			System.out.println(a.deleteMovie().getKey());
-			System.out.println();
+		System.out.println(a.deleteMovie().getKey());
+		System.out.println();
 	    	}
 	        a.printMovie();
 	    	System.out.println(a.isEmpty());
