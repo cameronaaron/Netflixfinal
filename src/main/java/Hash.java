@@ -3,20 +3,23 @@ public class Hash {
    private int n;
 
 
-    public hash(){
+    public Hash() {
         n = 0;
+
     }
+
     public boolean isEmpty(){
        return n==0;
     }
-    public Node lookup(int key) {
+
+    public customerNode lookup(int key) {
         if (isEmpty()) {
             System.out.print("Cannot be printed hashtable is empty");
             return null;
         }
         else {
             int index = key % 1000;
-            Node temp = null;
+            customerNode temp = null;
             if (h[index].getKey() == key) {
                 return h[index];
             } else {
@@ -37,7 +40,8 @@ public class Hash {
             }
         }
     }
-    public void insert(Node newnode) {
+
+    public void insert(customerNode newnode) {
         int index = newnode.getKey() % 1000;
         n++;
         if (h[index] == null) {
@@ -45,7 +49,7 @@ public class Hash {
 
 
         } else {
-            Node temp = h[index];
+            customerNode temp = h[index];
             h[index] = newnode;
             h[index].setNext(temp);
 
@@ -59,7 +63,7 @@ public class Hash {
             else{
                int index= key%7;
                 n--;
-                Node temp= null;
+                customerNode temp = null;
                 if (h[index].getKey()==key){
                     if (h[index].getNext()!=null){
                         h[index]=h[index].getNext();
@@ -72,7 +76,7 @@ public class Hash {
                 }
                 else{
                     temp=h[index];
-                    Node temp2=null;
+                    customerNode temp2 = null;
                     while (temp != null && temp.getKey() != key  ){
                         temp2=temp;
                         temp=temp.getNext();
@@ -98,7 +102,7 @@ public class Hash {
 
     }
     public void printchain(int index){
-        Node temp=h[index];
+        customerNode temp = h[index];
         while (temp!=null){
             System.out.println(temp.getKey());
 	 

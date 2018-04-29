@@ -4,7 +4,7 @@ public class customerNode {
 	private String name;
 	private String email;
 	private int ccn;
-	private wishListQueue wishList;
+	private wishList wishList;
 	
 	public customerNode(String name0, String email0, int ccn0) {
 		name = name0;

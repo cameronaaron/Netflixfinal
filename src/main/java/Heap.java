@@ -5,10 +5,10 @@
 //
 
 //
-public class heap {
+public class Heap {
     movieNode [] h = new movieNode [120];
     private int n;
-    private Node temp;
+    private movieNode temp;
     public Heap() {
 
         n=0;
@@ -20,7 +20,7 @@ public class heap {
         return n == 0;
     }
     // This returns the node at the top of the stack
-    public Node findMin() {
+    public movieNode findMin() {
         return h[0];
 
     }
@@ -57,7 +57,7 @@ public class heap {
     }
 
     // This removes from the top of the stack
-    public void insert(Node newnode){
+    public void insert(movieNode newnode) {
         if (isEmptyset()){
             h[0]=newnode;
             n++;
