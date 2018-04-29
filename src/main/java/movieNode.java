@@ -4,13 +4,14 @@ public class movieNode{
 	private String title;
 	private int rDate;
 	private int popScore;
+	private int uniqID;
 
-	
+
 	///A constructor method which takes 4 parameters/
 	public movieNode(String title, int rDate, int popScore){
 		this.title = title;
-		this rDate = rDate;
-		this popScore = popScore;
+		this.rDate = rDate;
+		this.popScore = popScore;
 
 	}
 	public String getTitle(){
