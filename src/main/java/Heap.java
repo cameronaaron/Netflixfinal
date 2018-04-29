@@ -46,10 +46,8 @@ public class Heap {
         int childR=2*p+2;
         if (childR>=n&&childL>=n){
             return -1;
-        }
-        else if(h[childR].getPopScore(>h[childL].getPopScore()||childR>=n){
+        } else if (h[childR].getPopScore() > h[childL].getPopScore() || childR >= n) {
             return childL;
-
         }
         else{
             return childR;
