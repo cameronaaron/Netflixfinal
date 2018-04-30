@@ -3,13 +3,13 @@ public class movieNode {
     /// Creating the 4 instance variables/
     private String title;
     private int rDate;
-    private int popScore;
+    private float popScore;
     private int uniqID;
     private movieNode rightReleaseD;
     private movieNode leftReleaseD;
     private movieNode rightID;
     private movieNode leftID;
-    private float score;
+
 
     /// A constructor method which takes 4 parameters/
     public movieNode(String title, int rDate, int popScore) {
@@ -20,7 +20,7 @@ public class movieNode {
         this.leftID = leftID;
         this.leftReleaseD = leftReleaseD;
         this.rightReleaseD = rightReleaseD;
-        this.score = score;
+
     }
 
     public String getTitle() {
@@ -48,7 +48,7 @@ public class movieNode {
         this.uniqID = uniqID;
     }
 
-    public int getPopScore() {
+    public float getPopScore() {
         return popScore;
     }
 
