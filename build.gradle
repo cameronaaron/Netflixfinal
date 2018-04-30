@@ -2,6 +2,14 @@ plugins {
     id 'java'
     id 'net.saliman.cobertura' version '2.3.1'
 }
+test {
+
+    cobertura {
+        coverageFormats = ['html', 'xml']
+        coverageIgnoreTrivial = true
+        coverageIgnores = ['org.slf4j.Logger.*']
+        coverageReportDir = file("$buildDir/reports/cobertura")
+        coverageSourceDirs << project.sourceSets.main.groovy.srcDirs
 
 group 'org.com212.thebestteam'
 version '1.0-SNAPSHOT'
