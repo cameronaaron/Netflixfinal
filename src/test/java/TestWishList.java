@@ -1,6 +1,6 @@
 public class TestWishList {
 	public static void main(String[] args){
-	    	wishListQueue a = new wishListQueue();
+		wishList a = new wishList();
 	    	customerNode xNode = new customerNode("Jane","Jane@gmail.com", 123456789);
 	    	customerNode yNode = new customerNode("Joe","Joe@gmail.com", 934567890);
 	    	customerNode zNode = new customerNode("Jack","Jack@gmail.com", 223452234);
