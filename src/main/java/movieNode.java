@@ -5,13 +5,17 @@ public class movieNode{
 	private int rDate;
 	private int popScore;
 	private int uniqID;
-
+    private movieNode rightReleaseD;
+    private movieNode leftReleaseD;
+    private movieNode rightID;
+    private movieNode leftID;
 
 	///A constructor method which takes 4 parameters/
 	public movieNode(String title, int rDate, int popScore){
 		this.title = title;
 		this.rDate = rDate;
 		this.popScore = popScore;
+        this.releaseD
 
 	}
 	public String getTitle(){
@@ -39,4 +43,22 @@ public class movieNode{
 	public void popScore(int popScore){
 		this.popScore = popScore;
 	}
+
+    public movieNode getLeftReleaseD() {
+        return leftReleaseD;
+    }
+
+    public void setLeftReleaseD(movieNode)
+
+    public movieNode getrightReleaseD() {
+        return rightReleaseD;
+    }
+
+    public movieNode getLeftID() {
+        return leftID;
+    }
+
+    public movieNode getrightID() {
+        return rightID;
+    }
     }
