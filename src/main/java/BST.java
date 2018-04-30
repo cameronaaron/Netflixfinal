@@ -125,7 +125,7 @@ public class BST {
         } else if (key == t.getRDate()) {
             return t;
         } else if (key < t.getRDate()) {
-            return (searchR(t.getLeftReleaseD(), key));
+            return searchR(t.getLeftReleaseD(), key);
 
         } else {
             return searchR(t.getRightReleaseD(), key);
