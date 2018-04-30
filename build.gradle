@@ -9,17 +9,19 @@ test {
         coverageIgnoreTrivial = true
         coverageIgnores = ['org.slf4j.Logger.*']
         coverageReportDir = file("$buildDir/reports/cobertura")
-        coverageSourceDirs << project.sourceSets.main.groovy.srcDirs
 
-group 'org.com212.thebestteam'
-version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+        group 'org.com212.thebestteam'
+        version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+        sourceCompatibility = 1.8
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+            testCompile group: 'junit', name: 'junit', version: '4.12'
+        }
+    }
 }
