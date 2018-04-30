@@ -9,7 +9,7 @@ public class TestCustomerNode {
   	System.out.println(xNode.getKey());
       
 	xNode.setName("Jill");
-	xNode.setName("Jill@gmail.com");
+	xNode.setEmail("Jill@gmail.com");
 	xNode.setCCN(987654321);
   	System.out.println("changed xNode");
   	System.out.println(xNode.getName());
