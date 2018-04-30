@@ -16,6 +16,7 @@ public class movieNode{
 		this.rDate = rDate;
 		this.popScore = popScore;
         this.rightID = rightID;
+        this.leftID = leftID;
         this.leftReleaseD = leftReleaseD;
         this.rightReleaseD = rightReleaseD;
 
@@ -52,20 +53,30 @@ public class movieNode{
         return leftReleaseD;
     }
 
-    public void setLeftReleaseD(movieNode) {
-
-
+    public void setLeftReleaseD(movieNode leftReleaseD) {
+        this.leftReleaseD = leftReleaseD;
     }
 
-    public movieNode getrightReleaseD() {
+    public movieNode getRightReleaseD() {
         return rightReleaseD;
+    }
+
+    public void setRightReleaseD(movieNode rightReleaseD) {
+        this.rightReleaseD = rightReleaseD;
     }
 
     public movieNode getLeftID() {
         return leftID;
     }
 
+    public void setLeftID(movieNode leftID) {
+        this.leftID = leftID;
+    }
     public movieNode getrightID() {
         return rightID;
+    }
+
+    public void setRiightID(movieNode rightID) {
+        this.rightID = rightID;
     }
     }
