@@ -15,7 +15,11 @@ public class movieNode{
 		this.title = title;
 		this.rDate = rDate;
 		this.popScore = popScore;
-        this.releaseD
+        this.rightID = rightID;
+        this.leftReleaseD = leftReleaseD;
+        this.rightReleaseD = rightReleaseD;
+
+
 
 	}
 	public String getTitle(){
@@ -48,7 +52,10 @@ public class movieNode{
         return leftReleaseD;
     }
 
-    public void setLeftReleaseD(movieNode)
+    public void setLeftReleaseD(movieNode) {
+
+
+    }
 
     public movieNode getrightReleaseD() {
         return rightReleaseD;
