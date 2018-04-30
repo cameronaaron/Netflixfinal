@@ -29,23 +29,23 @@ public class BST {
     }
 
     public movieNode deleteRoot(movieNode x) {
-        if (x.getRight() == null && x.getLeft() == null) {
+        if (x.getRightReleaseD() == null && x.getLeftReleaseD() == null) {
             return null;
-        } else if (x.getLeft() == null) {
-            Node temp = x.getRight();
-            x.setRight(null);
+        } else if (x.getLeftReleaseD() == null) {
+            movieNode temp = x.getRightReleaseD();
+            x.setRightReleaseD(null);
             return temp;
-        } else if (x.getLeft() == null) {
-            Node temp = x.getRight();
-            x.setLeft(null);
+        } else if (x.getLeftReleaseD() == null) {
+            movieNode temp = x.getRightReleaseD();
+            x.setLeftReleaseD(null);
             return temp;
         } else {
-            Node s = successor(x);
+            movieNode s = successor(x);
             delete(s);
-            s.setRight(x.getRight());
-            s.setLeft(x.getLeft());
-            x.setLeft(null);
-            x.setRight(null);
+            s.setRightReleaseD(x.getRightReleaseD());
+            s.setLeftReleaseD(x.getLeftReleaseD());
+            x.setLeftReleaseD(null);
+            x.setRightReleaseD(null);
             return s;
 
 
@@ -54,23 +54,23 @@ public class BST {
 
 
     public movieNode successor(movieNode x) {
-        movieNode temp = x.getRight();
-        while (temp.getLeft() != null) {
-            temp = temp.getLeft();
+        movieNode temp = x.getRightReleaseD();
+        while (temp.getLeftReleaseD() != null) {
+            temp = temp.getLeftReleaseD();
         }
         return temp;
     }
 
-    public void delete2(movieNode tree, Node x) {
-        if (tree.getRight() == x) {
+    public void delete2(movieNode tree, movieNode x) {
+        if (tree.getRightReleaseD() == x) {
 
-            tree.setRight(deleteRoot(x));
-        } else if (tree.getLeft() == x) {
-            tree.setLeft(deleteRoot(x));
-        } else if (x.getKey() < tree.getKey()) {
-            delete2(tree.getLeft(), x);
+            tree.setRightReleaseD(deleteRoot(x));
+        } else if (tree.getLeftReleaseD() == x) {
+            tree.setLeftReleaseD(deleteRoot(x));
+        } else if (x.getRDate() < tree.getRDate()) {
+            delete2(tree.getLeftReleaseD(), x);
         } else {
-            delete2(tree.getRight(), x);
+            delete2(tree.getRightReleaseD(), x);
         }
 
 
@@ -89,28 +89,28 @@ public class BST {
 
     }
 
-    public void insert2(Node t, Node p) {
-        if (p.getKey() < t.getKey()) {
-            if (t.getLeft() == null) {
-                t.setLeft(p);
+    public void insert2(movieNode t, movieNode p) {
+        if (p.getRDate() < t.getRDate()) {
+            if (t.getLeftReleaseD() == null) {
+                t.setLeftReleaseD(p);
             } else {
-                insert2(t.getLeft(), p);
+                insert2(t.getLeftReleaseD(), p);
 
             }
 
         } else {
-            if (t.getRight() == null) {
-                t.setRight(p);
+            if (t.getRightReleaseD() == null) {
+                t.setRightReleaseD(p);
             } else {
-                insert2(t.getRight(), p);
+                insert2(t.getRightReleaseD(), p);
 
             }
 
         }
     }
 
-    public Node search(int key) {
-        if (root.getKey() == key) {
+    public movieNode search(int key) {
+        if (root.getRDate() == key) {
             return root;
         } else {
             return searchR(root, key);
@@ -119,16 +119,16 @@ public class BST {
 
     }
 
-    public Node searchR(Node t, int key) {
+    public movieNode searchR(movieNode t, int key) {
         if (t == null) {
             return null;
-        } else if (key == t.getKey()) {
+        } else if (key == t.getRDate()) {
             return t;
-        } else if (key < t.getKey()) {
-            return (searchR(t.getLeft(), key));
+        } else if (key < t.getRDate()) {
+            return (searchR(t.getLeftReleaseD(), key));
 
         } else {
-            return searchR(t.getRight(), key);
+            return searchR(t.getRightReleaseD(), key);
 
         }
     }
@@ -140,11 +140,11 @@ public class BST {
         }
     }
 
-    public void traverse2(Node t) {
+    public void traverse2(movieNode t) {
         if (t != null) {
-            traverse2(t.getLeft());
-            System.out.println(t.getKey());
-            traverse2(t.getRight());
+            traverse2(t.getLeftReleaseD());
+            System.out.println(t.getRDate());
+            traverse2(t.getRightReleaseD());
         }
     }
 
@@ -155,19 +155,19 @@ public class BST {
         System.out.println();
     }
 
-    private void printTree2(customerNode tree) {
+    private void printTree2(movieNode tree) {
         if (tree != null) {
-            System.out.print(tree.getKey() + " ");
-            if (tree.getLeft() != null)
-                System.out.print("Left: " + tree.getLeft().getKey() + " ");
+            System.out.print(tree.getRDate() + " ");
+            if (tree.getLeftReleaseD() != null)
+                System.out.print("Left: " + tree.getLeftReleaseD().getRDate() + " ");
             else
                 System.out.print("Left: null ");
-            if (tree.getRight() != null)
-                System.out.println("Right: " + tree.getRight().getKey() + " ");
+            if (tree.getRightReleaseD() != null)
+                System.out.println("Right: " + tree.getRightReleaseD().getRDate() + " ");
             else
                 System.out.println("Right: null ");
-            printTree2(tree.getLeft());
-            printTree2(tree.getRight());
+            printTree2(tree.getLeftReleaseD());
+            printTree2(tree.getRightReleaseD());
         }
     }
 
