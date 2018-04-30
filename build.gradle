@@ -5,6 +5,8 @@ plugins {
 }
 test {
 
+
+
     cobertura {
         coverageFormats = ['html', 'xml']
         coverageIgnoreTrivial = true
@@ -23,6 +25,8 @@ test {
 
         dependencies {
             testCompile group: 'junit', name: 'junit', version: '5.2.0'
+            testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+            testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+            }
         }
     }
-}
