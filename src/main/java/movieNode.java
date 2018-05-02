@@ -80,11 +80,11 @@ public class movieNode {
         this.leftID = leftID;
     }
 
-    public movieNode getrightID() {
+    public movieNode getRightID() {
         return rightID;
     }
 
-    public void setRiightID(movieNode rightID) {
+    public void setRightID(movieNode rightID) {
         this.rightID = rightID;
     }
 
