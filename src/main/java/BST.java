@@ -186,7 +186,7 @@ public class BST {
     // Pop Funtion
     public void deleteID(movieNode x) {
         if (x == root2) {
-            root = deleteRootID(x);
+            root2 = deleteRootID(x);
 
         } else {
             delete2ID(root2, x);
@@ -208,7 +208,7 @@ public class BST {
             return temp;
         } else {
             movieNode s = successorID(x);
-            delete(s);
+            deleteID(s);
             s.setRightID(x.getRightID());
             s.setLeftID(x.getLeftID());
             x.setLeftID(null);
@@ -235,9 +235,9 @@ public class BST {
         } else if (tree.getLeftID() == x) {
             tree.setLeftID(deleteRoot(x));
         } else if (x.getUniqID() < tree.getUniqID()) {
-            delete2(tree.getLeftID(), x);
+            delete2ID(tree.getLeftID(), x);
         } else {
-            delete2(tree.getRightID(), x);
+            delete2ID(tree.getRightID(), x);
         }
 
 
@@ -261,7 +261,7 @@ public class BST {
             if (t.getLeftID() == null) {
                 t.setLeftID(p);
             } else {
-                insert2(t.getLeftID(), p);
+                insert2ID(t.getLeftID(), p);
 
             }
 
@@ -269,7 +269,7 @@ public class BST {
             if (t.getRightID() == null) {
                 t.setRightID(p);
             } else {
-                insert2(t.getRightID(), p);
+                insert2ID(t.getRightID(), p);
 
             }
 
