@@ -3,7 +3,7 @@ public class movieNode {
     /// Creating the 4 instance variables/
     private String title;
     private int rDate;
-    private float popScore;
+    private int popScore;
     private int uniqID;
     private movieNode rightReleaseD;
     private movieNode leftReleaseD;
@@ -31,7 +31,7 @@ public class movieNode {
         this.title = title;
     }
 
-    public int getRDate() {
+    public int getRDate(){
         return rDate;
     }
 
@@ -40,7 +40,7 @@ public class movieNode {
     }
 
     public int getUniqID() {
-        int ID = rDate % 10;
+        int ID = rDate % 100000;
         return ID;
     }
 
@@ -48,7 +48,7 @@ public class movieNode {
         this.uniqID = uniqID;
     }
 
-    public float getPopScore() {
+    public int getPopScore() {
         return popScore;
     }
 
@@ -87,6 +87,22 @@ public class movieNode {
     public void setRightID(movieNode rightID) {
         this.rightID = rightID;
     }
+    public movieNode findSuccessorRDate(){
+    // used on BST to find the successor on the delete function
+    if (leftReleaseD==null){
+        return this;
+        }
+    else{
+        return leftReleaseD.findSuccessorRDate();
+    }
+    }
+    public movieNode findSuccessorID(){
+    // used on BST to find the successor on the delete function
+    if (leftID==null){
+        return this;
+        }
+    else{
+        return leftID.findSuccessorID();
+    }
 
-
-}
+}}
