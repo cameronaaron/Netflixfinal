@@ -27,6 +27,8 @@ public class TestBST {
         a.insertID(nNode);
         a.traverse();
         a.printTree();
+        a.traverseID();
+        a.printTreeID();
         System.out.println("search");
         System.out.println(a.search(123456789).getTitle());
         System.out.println(a.search(934567890).getTitle());
