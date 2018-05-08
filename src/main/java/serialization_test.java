@@ -1,9 +1,12 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 public class serialization_test
 {
   public static void main (String [] args)
   {
-    Movie mov1 = new Movie("Pulp Fiction", 19940814, 00001, 94);
+    movieNode mov1 = new movieNode("Pulp Fiction", 19940814, 5);
 
     File movHeap = new File("MovieList.txt");
 		// if file exists, deserialize

@@ -1,14 +1,16 @@
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 public class deserialization_test
 {
   public static void main (String [] args)
   {
 
-    Movie mov1 = null;
+    movieNode mov1 = null;
     try{
     FileInputStream fileIn = new FileInputStream("MovieList.txt");
     ObjectInputStream in = new ObjectInputStream(fileIn);
-    mov1 = (Movie) in.readObject();
+      mov1 = (movieNode) in.readObject();
     in.close();
     fileIn.close();
   }
@@ -25,9 +27,9 @@ public class deserialization_test
 
     System.out.println("Deserialized movie!!!");
     System.out.println("Title:" + mov1.getTitle());
-    System.out.println("ID:" + mov1.getID());
-    System.out.println("Release date:" + mov1.getRelease());
-    System.out.println("Rotten Tomatoes score:" + mov1.getrTscore());
+    System.out.println("ID:" + mov1.getUniqID());
+    System.out.println("Release date:" + mov1.getRDate());
+    System.out.println("Rotten Tomatoes score:" + mov1.getPopScore());
 
   }
 }
