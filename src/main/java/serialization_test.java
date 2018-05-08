@@ -19,7 +19,7 @@ public class serialization_test
     out.writeObject(mov1);
     out.close();
     fileOut.close();
-    System.out.println("serialized as shit");
+      System.out.println("Serialized like a boosssss");
   }catch(IOException i)
   {
     i.printStackTrace();

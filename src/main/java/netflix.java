@@ -1,6 +1,7 @@
-import java.util.Scanner; 
+import java.io.Serializable;
+import java.util.Scanner;
 
-public class netflix {
+public class netflix implements Serializable {
     public static void main(String[] args){
         Scanner input1 = new Scanner(System.in);
         int c1;

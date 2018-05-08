@@ -1,4 +1,6 @@
-public class Hash {
+import java.io.Serializable;
+
+public class Hash implements Serializable {
    customerNode [] h = new customerNode [1000];
    private int n;
 

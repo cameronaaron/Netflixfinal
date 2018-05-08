@@ -25,7 +25,7 @@ public class deserialization_test
     return;
   }
 
-    System.out.println("Deserialized movie!!!");
+    System.out.println("Deserialized!!!");
     System.out.println("Title:" + mov1.getTitle());
     System.out.println("ID:" + mov1.getUniqID());
     System.out.println("Release date:" + mov1.getRDate());

@@ -1,6 +1,8 @@
 //Wish List implemented by a QueueLL
 
-public class wishList {
+import java.io.Serializable;
+
+public class wishList implements Serializable {
 		private customerNode fMovie;
 		private customerNode eMovie;
 		private int n;

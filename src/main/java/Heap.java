@@ -1,11 +1,11 @@
-
+import java.io.Serializable;
 
 //Cameron Aaron
 //Mar 23 2018
 //
 
 //
-public class Heap {
+public class Heap implements Serializable {
     movieNode [] h = new movieNode [120];
     private int n;
     private movieNode temp;

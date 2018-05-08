@@ -1,4 +1,6 @@
-public class movieNode {
+import java.io.Serializable;
+
+public class movieNode implements Serializable {
 
     /// Creating the 4 instance variables/
     private String title;
