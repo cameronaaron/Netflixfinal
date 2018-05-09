@@ -1,6 +1,5 @@
 import java.io.Serializable;
 
-
 public class movieNode implements Serializable {
 
     /// Creating the 4 instance variables/
