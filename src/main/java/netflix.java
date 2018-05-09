@@ -1,7 +1,11 @@
+import java.util.Scanner; 
 import java.io.Serializable;
-import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 
-public class netflix implements Serializable {
+public class netflix implements Serializable{
     public static void main(String[] args){
         Scanner input1 = new Scanner(System.in);
         int c1;
@@ -28,36 +32,138 @@ public class netflix implements Serializable {
             if (userU.equals(userNameU) && passU.equals(passWordU)) {
                 System.out.println("Successful Login \n");
 
-                Scanner input2 = new Scanner(System.in);
-                int c2;
-                System.out.println("Choose an action below: \n");
-                System.out.println("(1) Access Movie(by ReleaseDate)");
-                System.out.println("(2) Access Movie(by ID)");
-                System.out.println("(3) Access Wish List");
-                System.out.println("(4) Search Movie ID");
-                System.out.println("(5) Return to Login");
-                System.out.println("Choice?");
-                c2 = input2.nextInt();
+                Scanner input3 = new Scanner(System.in);
+                int c3;
+                System.out.println("Would you like to use a Loaded or New Database?");
+                System.out.println("(1) LOADED");
+                System.out.println("(2) NEW");
+                if (c3 == 1) {
+                    try {
+                        FileInputStream fileIn = new FileInputStream("output.txt");
+                        ObjectInputStream in = new ObjectInputStream(fileIn);
+                        a.bst = (netflixBST) in.readObject();
+                        a.hash = (netflixHash) in.readObject();
+                        a.heap = (netflixHeap) in.readObject();
+                        a = (Database) in.readObject();
+                        in.close();
+                        fileIn.close();
+                    }
+                    catch(IOException i) {
+                        i.printStackTrace();
+                    }
+                    catch(ClassNotFoundException j) {
+                        j.printStackTrace();
+                    }
+                    System.out.println("Database Restored");
+                    System.out.println();
 
-                // if (c2 == 1) {
+                    Scanner input2 = new Scanner(System.in);
+                    int c2;
+                    System.out.println("Choose an action below: \n");
+                    System.out.println("(1) Access Movie(by ReleaseDate)");
+                    System.out.println("(2) Access Movie(by ID)");
+                    System.out.println("(3) Access Wish List");
+                    System.out.println("(4) Search Movie ID");
+                    System.out.println("(5) Return to Login");
+                    System.out.println("(6) Quit"); //save info
+                    System.out.println("Choice?");
+                    c2 = input2.nextInt();
+                }
+                    // if (c2 == 1) {
+                    //     Scanner rdInput = new Scanner(System.in);
+                    //     System.out.println("Input Realease Date: ");
+                    //     string rdIn = rdInput.nextline();
+                    //     a.search(rdIn);
+                    // }
+                    // else if (c2 == 2) {
 
-                // }
-                // else if (c2 == 2) {
+                    // }
+                    // else if (c2 == 3) {
+                    //     wishListQueue a = new wishListQueue();
+                    // }
+                    // else if (c2 == 4) {
 
-                // }
-                // else if (c2 == 3) {
-                //     wishListQueue a = new wishListQueue();
-                // }
-                // else if (c2 == 4) {
-
-                // }
-                // else if (c2 == 5) {
-                        //netflix.main(args);
-                // }
-                // else() {
-                //     System.out.println("Invalid Input");
+                    // }
+                    // else if (c2 == 5) {
+                    //         netflix.main(args);
+                    // }
+                //     else if (c2 == 6) {
+                //         try {
+                //             FileOutputStream fileOut = new FileOutputStream("output.txt");
+                //             ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                //             out.writeObject(a.netflixBST);
+                //             out.writeObject(a.netflixHash);
+                //             out.writeObject(a.netflixHeap);
+                //             out.writeObject(a);
+                //             out.close();
+                //             fileOut.close();
+                //             System.out.println("Serialized object successfully in output.txt");
+                //             }
+                //         catch(IOException i) {
+                //                 i.printStackTrace();
+                //             }
+                //     }
+                //     else {
+                //         System.out.println("Invalid Input");
+                //     }
                 // }
             }
+
+                else if (c3 == 2){
+                    Scanner input2 = new Scanner(System.in);
+                    int c2;
+                    System.out.println("Choose an action below: \n");
+                    System.out.println("(1) Access Movie(by ReleaseDate)");
+                    System.out.println("(2) Access Movie(by ID)");
+                    System.out.println("(3) Access Wish List");
+                    System.out.println("(4) Search Movie ID");
+                    System.out.println("(5) Return to Login");
+                    System.out.println("(6) Quit"); //save info
+                    System.out.println("Choice?");
+                    c2 = input2.nextInt();
+
+                    // if (c2 == 1) {
+                    //     Scanner rdInput = new Scanner(System.in);
+                    //     System.out.println("Input Realease Date: ");
+                    //     string rdIn = rdInput.nextline();
+                    //     a.search(rdIn);
+                    // }
+                    // else if (c2 == 2) {
+
+                    // }
+                    // else if (c2 == 3) {
+                    //     wishListQueue a = new wishListQueue();
+                    // }
+                    // else if (c2 == 4) {
+
+                    // }
+                    // else if (c2 == 5) {
+                    //         netflix.main(args);
+                    // }
+                    // else if (c2 == 6) {
+                    //     try {
+                    //         FileOutputStream fileOut = new FileOutputStream("output.txt");
+                    //         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    //         out.writeObject(a.netflixBST);
+                    //         out.writeObject(a.netflixHash);
+                    //         out.writeObject(a.netflixHeap);
+                    //         out.writeObject(a);
+                    //         out.close();
+                    //         fileOut.close();
+                    //         System.out.println("Serialized object successfully in output.txt");
+                    //     }
+                    //     catch(IOException i) {
+                    //             i.printStackTrace();
+                    //     }
+                    // }
+                    // else {
+                    //     System.out.println("Invalid Input");
+                    // }
+                // }
+                // else {
+                //     System.out.println("Error");
+                 }
+
             else if (userU.equals(userNameU)) {
                 System.out.println("Invalid password");
                 netflix.main(args);
