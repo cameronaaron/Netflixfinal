@@ -1,11 +1,11 @@
 import java.io.Serializable;
 
 
-public class HashTable implements Serializable {
+public class netflixHash implements Serializable {
     customerNode []s = new customerNode [7]; //creates max size array
     private int n; //declaring variable to act as counter
 
-    public HashTable() {
+    public netflixHash() {
         n=0; //initializes counter
     }
 
