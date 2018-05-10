@@ -1,10 +1,5 @@
-import java.util.Scanner; 
-import java.io.Serializable;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
 import java.io.*;
+import java.util.Scanner;
 
 public class netflix implements Serializable{
 
@@ -110,7 +105,7 @@ public class netflix implements Serializable{
                                     System.out.println("Which movie would you like to add?");
                                     for(int i =0; i<= c6; i++){
                                         Scanner input7 = new Scanner(System.in);
-                                        movieNode c7 = input7.nextline();
+                                        movieNode c7 = input7.nextLine();
                                         System.out.println(w.addMovie(c7));
                                     }
                                 }
@@ -143,7 +138,7 @@ public class netflix implements Serializable{
                         catch(IOException i) {
                                 i.printStackTrace();
                             }
-                            System.out.ln("You have successfully quit!");
+                        System.out.println("You have successfully quit!");
                     }
                     else {
                         System.out.println("Invalid Input");
