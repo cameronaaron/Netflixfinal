@@ -1,4 +1,8 @@
-public class customerNode {
+import java.io.Serializable;
+import java.io.*;
+
+
+public class customerNode implements Serializable {
 	
 	private customerNode next;
 	private String name;
@@ -10,8 +14,9 @@ public class customerNode {
 		name = name0;
 		email = email0;
 		ccn = ccn0;
-		//unsure if customerNode[] is correct
-		customerNode []wishList = new customerNode [20];
+
+		
+		//customerNode []wishList = new customerNode [20];
 		
  		next = null;
 		/*
@@ -55,6 +60,9 @@ public class customerNode {
 	public customerNode getNext() {
 		return next;
 	}
+	// public void setWishList(wishList wishList0){
+	// 	wishList = wishList0;
+	// }
 	/*
 	public void setRight(Node right0) {
 		right = right0;

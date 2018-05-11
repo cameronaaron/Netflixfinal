@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.io.*;
 
 public class netflixBST implements Serializable{
 
@@ -28,13 +29,13 @@ public class netflixBST implements Serializable{
     if (tree != null) {
         System.out.print(tree.getRDate() + " ");
             if (tree.getLeftReleaseD() != null)
-            System.out.print("Left: " + tree.getLeftReleaseD().getRDate() + " ");
+            System.out.print("Release Date: " + tree.getLeftReleaseD().getRDate() + " ");
             else
-                System.out.print("Left: null ");
+                System.out.print(" ");
             if (tree.getRightReleaseD() != null)
-            System.out.println("Right: " + tree.getRightReleaseD().getRDate() + " ");
+            System.out.println("Release Date: " + tree.getRightReleaseD().getRDate() + " ");
             else
-                System.out.println("Right: null ");
+                System.out.println(" ");
         printTree2(tree.getLeftReleaseD());
         printTree2(tree.getRightReleaseD());
     }
@@ -76,7 +77,7 @@ public class netflixBST implements Serializable{
     public void traverser(movieNode x){
     if(x != null){
         traverser(x.getLeftReleaseD());
-        System.out.println(x.getRDate());
+        System.out.println(x.getTitle() + " ame out on " + x.getRDate() + " (yyyymmdd)");
         traverser(x.getRightReleaseD());
     }
     }

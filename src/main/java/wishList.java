@@ -1,55 +1,69 @@
-//Wish List implemented by a QueueLL
-
 import java.io.Serializable;
+import java.io.*;
 
+public class wishList implements Serializable{
 
-public class wishList implements Serializable {
-		private customerNode fMovie;
-		private customerNode eMovie;
-		private int n;
-			
-	public wishList() {
-		fMovie = null;
-		eMovie = null;
-		n = 0;
+	//creates 3 different variables as integers, and creates a new array
+	private int n;
+	private int front;
+	movieNode[] q;
+	private int tail;
+
+	//Constructor for the Queue array, sets n, front, tail all equal to 0 and sets the max size of the array to 100 
+	public wishList(){
+		int n = 0;
+		int front = 0;
+		int tail = 0;
+		q = new movieNode[100];
+
 	}
-		
-	public customerNode accessMovie() {
-		return fMovie;
-	}
-	
-	public customerNode deleteMovie() {
-		customerNode temp; 
-		temp = fMovie;
-		fMovie = fMovie.getNext();
-		n--;
-		return temp;
-	}
-	
-	public void addMovie(customerNode x) {
-		if (fMovie == null) {
-			fMovie = x;
-			eMovie = x;
-			n++;
+
+	// printQueue method for QueueA
+	//Prints the key values for the movieNodes in the queue
+    public void printQueue() {
+        System.out.println(front);
+        System.out.println(tail);
+        if (front <= tail)
+           for(int i = front; i < tail; i++) 
+               System.out.println(q[i].getUniqID());
+        else {
+           for(int i = front; i < 100; i++) 
+               System.out.println(q[i].getUniqID());          
+           for(int i = 0; i < tail; i++) 
+               System.out.println(q[i].getUniqID());
+        }          
+    }
+
+	//Returns the first movieNode of queue
+    public movieNode front(){
+    	return q[front];
+    }
+
+	//Returns and removes the first movieNode of queue
+    public movieNode deleteMovie(){
+    	int temp = front;
+    	front = (front + 1) % 100;
+    	n = n - 1;
+    	return q[temp];
+
+    }
+
+	//Adds movieNode x to the queue
+    public void addMovie(movieNode x){
+    	q[tail] = x;
+	n = n + 1;
+    	tail = (front + n) % 100;
+
+    }
+
+    //Boolean function which returns true or false depending if the queue is empty or not
+	public Boolean isEmpty(){
+		if (n==0){
+			return true;
 		}
-		else {
-			customerNode temp = eMovie;
-			eMovie = x;
-			temp.setNext(eMovie);
-			n++;
-		}
-	}
-	
-	public boolean isEmpty() {
-		return (n==0);
-	}
-	
-	public void printMovie() {
-		System.out.println(n);
-		customerNode temp = fMovie;
-		while (temp != null) {
-			System.out.println(temp.getKey());
-			temp = temp.getNext();
+		else{
+			return false;
 		}
 	}
 }
+
