@@ -6,7 +6,7 @@ public class netflix2 {
     	netflixBST bst = new netflixBST();
         netflixHeap heap = new netflixHeap();
         netflixHash hash = new netflixHash();
-
+/*
         movieNode mov1 = new movieNode("Black Panther",20180216, 96);
         movieNode mov2 = new movieNode("Avengers: Infinity War", 20180427, 84);
         movieNode mov3 = new movieNode("Pacific Rim: Uprising", 20180323, 43);
@@ -24,7 +24,7 @@ public class netflix2 {
         heap.insert(mov3);
 
         hash.insert(xNode);
-
+*/
         Scanner input1 = new Scanner(System.in);
         int c1;
         System.out.println("Welcome to the Netflix Database \n");
@@ -50,8 +50,8 @@ public class netflix2 {
         		String c3;
         		c3 = input3.nextLine();
 
-        		
-        		System.out.println("Please Input your Credit Card Number:");
+
+                System.out.println("Please Input the last 4 digits of your Credit Card Number:");
 
         		Scanner input4 = new Scanner(System.in);
         		int c4;
@@ -153,7 +153,7 @@ public class netflix2 {
             }
 
             else{
-            	System.out.println("Invaild Input. Please Try Again!");
+                    System.out.println("Invalid Input. Please Try Again!");
             }       
 
 
@@ -187,7 +187,7 @@ public class netflix2 {
             String passA = pAInput.nextLine();
 
             if (userA.equals(userNameA) && passA.equals(passWordA)){
-            	System.out.println("Successfull Login \n");
+                System.out.println("Successfully Logged in1 \n");
 
             	Scanner input11 = new Scanner(System.in);
             	int c11;
