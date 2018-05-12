@@ -64,8 +64,7 @@ public class netflix2 {
                 String c5;
                 c5 = input5.nextLine();
 
-                customerNode yNode = new 
-                (c3, c5, c4);
+                customerNode yNode = new customerNode(c3, c5, c4);
                 hash.insert(yNode);
 
                 System.out.println("Here is your info!");
