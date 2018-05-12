@@ -173,7 +173,7 @@ public class netflix2 {
 
         else{
             System.out.println("Hello Returning User!");
-            System.out.println("Please Input your Credit Card Number:");
+                System.out.println("Please Input your last 8 digits of Credit Card Number:");
 
             Scanner CCNInput = new Scanner(System.in);
             int ccn;
