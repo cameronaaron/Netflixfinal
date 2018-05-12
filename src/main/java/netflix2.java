@@ -67,7 +67,7 @@ public class netflix2 {
         		customerNode yNode = new customerNode(c3, c5, c4);
         		hash.insert(yNode);
         		System.out.println(yNode.getEmail());
-
+                public void Movie_Menu;
                 System.out.println("Choose an action below: \n");
                 System.out.println("(1) Access Movie (by Release Date)");
                 System.out.println("(2) Access Movie(by ID)");
