@@ -6,7 +6,7 @@ public class netflix2 {
         netflixBST bst = new netflixBST();
         netflixHeap heap = new netflixHeap();
         netflixHash hash = new netflixHash();
-
+/*
         movieNode mov1 = new movieNode("Black Panther",20180216, 96);
         movieNode mov2 = new movieNode("Avengers: Infinity War", 20180427, 84);
         movieNode mov3 = new movieNode("Pacific Rim: Uprising", 20180323, 43);
@@ -24,6 +24,7 @@ public class netflix2 {
         heap.insert(mov3);
 
         hash.insert(xNode);
+*/
 
         Scanner input1 = new Scanner(System.in);
         int c1;
@@ -165,7 +166,7 @@ public class netflix2 {
             }
 
             else{
-                System.out.println("Invaild Input. Please Try Again!");
+                    System.out.println("Invalid Input. Please Try Again!");
             }       
 
 
