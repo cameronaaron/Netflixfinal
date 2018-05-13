@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.io.*;
 
 public class movieNode implements Serializable {
 
@@ -7,7 +6,6 @@ public class movieNode implements Serializable {
     private String title;
     private int rDate;
     private int popScore;
-    private int uniqID;
     private movieNode rightReleaseD;
     private movieNode leftReleaseD;
     private movieNode rightID;
@@ -48,7 +46,7 @@ public class movieNode implements Serializable {
     }
 
     public void setUniqID(int uniqID) {
-        this.uniqID = uniqID;
+        int uniqID1 = uniqID;
     }
 
     public int getPopScore() {

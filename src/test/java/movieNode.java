@@ -4,7 +4,6 @@ public class movieNode {
     private String title;
     private int rDate;
     private int popScore;
-    private int uniqID;
 
 
     ///A constructor method which takes 4 parameters/
@@ -37,7 +36,7 @@ public class movieNode {
     }
 
     public void setUniqID(int uniqID) {
-        this.uniqID = uniqID;
+        int uniqID1 = uniqID;
     }
 
     public int getPopScore() {

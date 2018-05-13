@@ -1,17 +1,16 @@
 import java.io.Serializable;
-import java.io.*;
 
 
 public class netflixHeap implements Serializable{
-    movieNode [] h = new movieNode [120];
+    final movieNode[] h = new movieNode[120];
     private int n;
-    private movieNode temp;
+
     public netflixHeap() {
 
         n=0;
     }
 
-    // This is the creatin of the is empty function this will tell you
+    // This is the creating of the is empty function this will tell you
 
     public boolean isEmptyset() {
         return n == 0;
@@ -32,10 +31,11 @@ public class netflixHeap implements Serializable{
 
         }
     }
-    public void swap(int c, int p){
-        temp=h[p];
+
+    private void swap(int c, int p) {
+        movieNode temp = h[p];
         h[p]=h[c];
-        h[c]=temp;
+        h[c] = temp;
 
     }
     public int child(int p){

@@ -1,32 +1,31 @@
-
-import java.util.Scanner;
 import java.io.*;
+import java.util.Scanner;
 
-
-public class netflix2 implements Serializable{
-
+public class netflix2 {
     public static void main(String[] args){
-        netflixHeap heap = new netflixHeap();
+
         netflixBST bst = new netflixBST();
+        netflixHeap heap = new netflixHeap();
         netflixHash hash = new netflixHash();
+        wishList wish = new wishList();
 
         movieNode mov1 = new movieNode("Black Panther", 20180216, 96);
         movieNode mov2 = new movieNode("Avengers: Infinity War", 20180427, 84);
         movieNode mov3 = new movieNode("Pacific Rim: Uprising", 20180323, 43);
 
-        customerNode xNode = new customerNode("Jane","Jane@gmail.com", 123456789);
+        // customerNode xNode = new customerNode("Jane","Jane@gmail.com", 123456789);
 
         bst.insert(mov1);
         bst.insertID(mov1);
         heap.insert(mov1);
-        heap.insert(mov3);
         bst.insert(mov2);
         bst.insertID(mov2);
         heap.insert(mov2);
         bst.insert(mov3);
         bst.insertID(mov3);
+        heap.insert(mov3);
 
-        hash.insert(xNode);
+        //hash.insert(xNode);
 
         Scanner input1 = new Scanner(System.in);
         int c1;
@@ -36,7 +35,7 @@ public class netflix2 implements Serializable{
         System.out.println("(2) ADMIN");
         c1 = input1.nextInt();
 
-        if (c1 == 1){
+        if (c1 == 1) {
             System.out.println("Hi! Are you a:");
             System.out.println("(1) New User");
             System.out.println("(2) Returning User");
@@ -45,41 +44,56 @@ public class netflix2 implements Serializable{
             int c2;
             c2 = input2.nextInt();
 
-            if (c2 == 1){
+            if (c2 == 1) {
                 System.out.println("Hello New User!");
-
                 System.out.println("Please Input your Name:");
-                Scanner inName = new Scanner(System.in);
-                String name;
-                name = inName.nextLine();
 
-                
+                Scanner input3 = new Scanner(System.in);
+                String c3;
+                c3 = input3.nextLine();
+
+
                 System.out.println("Please Input your Credit Card Number:");
-                Scanner inCCN = new Scanner(System.in);
-                int ccn;
-                ccn = inCCN.nextInt();
+
+                Scanner input4 = new Scanner(System.in);
+                int c4;
+                c4 = input4.nextInt();
 
 
                 System.out.println("Please Input your Email Address: ");
-                Scanner inEmail = new Scanner(System.in);
-                String email;
-                email = inEmail.nextLine();
 
-                customerNode customerInfo = new customerNode(name, email, ccn);
-                hash.insert(customerInfo);
+                Scanner input5 = new Scanner(System.in);
+                String c5;
+                c5 = input5.nextLine();
+
+                customerNode yNode = new customerNode(c3, c5, c4);
+                hash.insert(yNode);
 
                 System.out.println("Here is your info!");
-                System.out.println(customerInfo.getName());
-                System.out.println(customerInfo.getCCN());
-                System.out.println(customerInfo.getEmail());
+                System.out.println(yNode.getName());
+                System.out.println(yNode.getCCN());
+                System.out.println(yNode.getEmail());
+
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("User.txt");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(hash);
+                    out.close();
+                    fileOut.close();
+                    System.out.println("Your file has been serialized!");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                }
 
                 System.out.println("Choose an action below: \n");
-                System.out.println("(1) Access Movie (by Release Date)");
+                System.out.println("(1) Add movie");
                 System.out.println("(2) Access Movie(by ID)");
                 System.out.println("(3) Access Wish List");
+
                 System.out.println("(4) Print to Screen All Movies in Order of Release Date");
                 System.out.println("(5) Go back");
                 System.out.println("(6) Quit");
+                System.out.println("(7) Access Movie (by Release Date)");
 
 
                 Scanner inM1 = new Scanner(System.in);
@@ -88,27 +102,90 @@ public class netflix2 implements Serializable{
 
 
                 if (m1 == 1) {
-                    System.out.println("Enter Release Date:");
-                    Scanner uInput = new Scanner(System.in);
-                    int i;
+                    //if serialization doesnt work then add the heap serialization
+                    System.out.println("Input Movie Title: ");
+                    Scanner input20 = new Scanner(System.in);
+                    String c20;
+                    c20 = input20.nextLine();
 
-                    i = uInput.nextInt();
-                    System.out.println("The movie with release date " + i + " is: ");
-                    System.out.println(bst.search(i).getTitle());
-                }
+                    System.out.println("Input Release Date: ");
+                    Scanner input21 = new Scanner(System.in);
+                    int c21;
+                    c21 = input21.nextInt();
 
-                else if (m1 == 2){
+                    System.out.println("Input Popularity Score: ");
+                    Scanner input22 = new Scanner(System.in);
+                    int c22;
+                    c22 = input22.nextInt();
+
+                    movieNode zNode = new movieNode(c20, c21, c22);
+                    bst.insert(zNode);
+                    bst.insertID(zNode);
+                    heap.insert(zNode);
+
+                    System.out.println("Here is your info!");
+                    System.out.println(zNode.getTitle());
+                    System.out.println(zNode.getRDate());
+                    System.out.println(zNode.getPopScore());
+
+                    try {
+                        FileOutputStream fileOut = new FileOutputStream("Movies.txt");
+                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                        out.writeObject(bst);
+                        out.writeObject(heap);
+                        out.close();
+                        fileOut.close();
+                        System.out.println("Your file has been serialized!");
+                    } catch (IOException i) {
+                        i.printStackTrace();
+                    }
+
+
+                    try {
+                        FileInputStream fileIn = new FileInputStream("Heap.txt");
+                        ObjectInputStream in = new ObjectInputStream(fileIn);
+                        heap = (netflixHeap) in.readObject();
+                        bst = (netflixBST) in.readObject();
+                        bst.search(zNode.getRDate());
+                        in.close();
+                        fileIn.close();
+                        // return heap;
+                    } catch (IOException i) {
+                        i.printStackTrace();
+                        //  return null;
+                    } catch (ClassNotFoundException c) {
+                        System.out.println("Error: Class not found");
+                        c.printStackTrace();
+                        // return null;
+                    }
+                } else if (m1 == 2) {
                     System.out.println("Enter ID: ");
                     Scanner uInput = new Scanner(System.in);
                     int i;
 
                     i = uInput.nextInt();
                     System.out.println("The movie with ID " + i + " is: ");
-                    System.out.println(bst.searchID(i).getTitle());
-                }
 
-                else if (m1 == 3){
 
+                    try {
+                        FileInputStream fileIn = new FileInputStream("Heap.txt");
+                        ObjectInputStream in = new ObjectInputStream(fileIn);
+                        heap = (netflixHeap) in.readObject();
+                        bst = (netflixBST) in.readObject();
+                        System.out.println(bst.searchID(i).getTitle());
+
+                        in.close();
+                        fileIn.close();
+                        // return heap;
+                    } catch (IOException w) {
+                        w.printStackTrace();
+                        //  return null;
+                    } catch (ClassNotFoundException c) {
+                        System.out.println("Error: Class not found");
+                        c.printStackTrace();
+                        // return null;
+                    }
+                } else if (m1 == 3) {
                     System.out.println("Access to WishList, Would you Like to:");
                     System.out.println("(1) Add to WishList");
                     System.out.println("(2) Access Next Movie");
@@ -117,141 +194,102 @@ public class netflix2 implements Serializable{
                     int m2;
                     m2 = inM2.nextInt();
 
-                    if (m2 == 1){
-
+                    if (m2 == 1) {
                         System.out.println("Adding a New Movie!");
 
                         System.out.println("Please Input Title of movie:");
-                        Scanner inTitle = new Scanner(System.in);
-                        String title;
-                        title = inTitle.nextLine();
+                        Scanner input8 = new Scanner(System.in);
+                        String c8;
+                        c8 = input8.nextLine();
 
                         System.out.println("Please Input Release Date of movie:");
-                        Scanner inRD = new Scanner(System.in);
-                        int rd;
-                        rd = inRD.nextInt();
+                        Scanner input9 = new Scanner(System.in);
+                        int c9;
+                        c9 = input9.nextInt();
 
                         System.out.println("Please Input the Popularity Score:");
-                        Scanner inPop = new Scanner(System.in);
-                        int pop;
-                        pop = inPop.nextInt();
+                        Scanner input10 = new Scanner(System.in);
+                        int c10;
+                        c10 = input10.nextInt();
 
-                        movieNode movieInfo = new movieNode(title, rd, pop);
+                        movieNode mov4 = new movieNode(c8, c9, c10);
 
-                        bst.insert(movieInfo);
-                        bst.insertID(movieInfo);
-                        heap.insert(movieInfo);
-
-                        // System.out.println(bst.insert(mov4));
-                        // System.out.println(bst.insertID(mov4));
-                        // System.out.println(heap.insert(mov4));
-
+                        bst.insert(mov4);
+                        bst.insertID(mov4);
+                        heap.insert(mov4);
+                    } else {
+                        //Acess to Next Movie
                     }
-                    else if (m2 == 2){
-                    System.out.println("Enter ID: ");
+                } else if (m1 == 4) {
+                    //Print to Screen all Movies based on Release Date
+                    bst.traverse();
+                } else if (m1 == 5) {
+                    //Go Back
+                    System.out.println("Choose an action below: \n");
+                    System.out.println("(1) Access Movie (by Release Date)");
+                    System.out.println("(2) Access Movie(by ID)");
+                    System.out.println("(3) Access Wish List");
+                    System.out.println("(4) Print to Screen All Movies in Order of Release Date");
+                    System.out.println("(5) Go back");
+                    System.out.println("(6) Quit");
+
+                    Scanner input67 = new Scanner(System.in);
+                    int c67;
+                    c67 = input67.nextInt();
+                } else if (m1 == 7) {
+                    System.out.println("Enter Release Date:");
                     Scanner uInput = new Scanner(System.in);
                     int i;
 
                     i = uInput.nextInt();
-                    System.out.println("The movie with ID " + i + " is: ");
-                    System.out.println(bst.searchID(i).getTitle());
-                    }
-                    else if (m2 == 3){
-                        System.out.println("wl");
-                    
-                    }
-                else if (m1 == 4){
-                    System.out.println("print");
-                }
-                else if (m1 == 5){
-                    System.out.println("print");
-                }
-                else if (m1 == 6){
-                    hash = null;
-                    try{
-                        FileInputStream fileIn = new FileInputStream("User.txt");
-                        ObjectInputStream in = new ObjectInputStream(fileIn);
-                        hash = (netflixHash) in.readObject();
-                        in.close();
-                        fileIn.close();
-                        return;
-                    }
-                    catch(IOException i){
-                        i.printStackTrace();
-                        return;
-                    } 
-                  
-                    catch(ClassNotFoundException c) {
-                        System.out.println("Error: Class not found");
-                        c.printStackTrace();
-                        return;
-                    }
+                    System.out.println("The movie with release date " + i + " is: ");
+                    System.out.println(bst.search(i).getTitle());
+                } else {
+                    System.out.println("Invaild Input. Please Try Again!");
+
+                    //yes i know its in the wrong place
+
                 }
 
-                else{
-                    //Access to Next Movie
-                }
-            }
-
-            else if(c2 == 4){
-                //Print to Screen all Movies based on Release Date
-                bst.traverse();
-            }
-
-            else if(c2 == 5){
-                //Go Back
-                Scanner inBack = new Scanner(System.in);
-                int back;
-                System.out.println("Choose an action below: \n");
-                System.out.println("(1) Access to Customer Info");
-                System.out.println("(2) See least Rated Movie");
-                System.out.println("(3) Print all movies in order of release date");
-                System.out.println("(4) Go back");
-                back = inBack.nextInt();
-            }
-            else if(c2 == 6){
-                //seriaize
-                try {
-                    FileOutputStream fileOut = new FileOutputStream("User.txt");
-                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                    out.writeObject(hash);
-                    out.close();
-                    fileOut.close();
-                    System.out.println("Your file has been serialized!");
-                }
-                catch(IOException i) {
-                    i.printStackTrace();
-                }
-            }
-            //else{
-            //    System.out.println("Invaild Input. Please Try Again!");
-            //}       
-
-            }
-
-        else{
-            System.out.println("Hello Returning User!");
+            } else if (c2 == 2) {
+                System.out.println("Hello Returning User!");
                 System.out.println("Please Input your last 8 digits of Credit Card Number:");
 
-            Scanner CCNInput = new Scanner(System.in);
-            int ccn;
-            ccn = CCNInput.nextInt();
+                Scanner CCNInput = new Scanner(System.in);
+                int ccn;
+                ccn = CCNInput.nextInt();
+                //hash = null;
+                try {
+                    FileInputStream fileIn = new FileInputStream("User.txt");
+                    ObjectInputStream in = new ObjectInputStream(fileIn);
+                    hash = (netflixHash) in.readObject();
+                    hash.printHashTable();
+                    System.out.println(hash.lookUp(ccn).getName());
 
-            hash.lookUp(ccn);
-
-        }
-        }
-
-        else if(c1 == 2){
+                    in.close();
+                    fileIn.close();
+                    //return hash;
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    // return null;
+                } catch (ClassNotFoundException c) {
+                    System.out.println("Error: Class not found");
+                    c.printStackTrace();
+                    // return null;
+                }
+            } else {
+                System.out.println("Error");
+            }
+        } else if (c1 == 2) {
             System.out.println("Hi Admin! \n");
 
             String userNameA = "admin321";
             String passWordA = "321";
-             
+
             Scanner uAInput = new Scanner(System.in);
             System.out.println("Username: ");
             String userA = uAInput.nextLine();
- 
+
             Scanner pAInput = new Scanner(System.in);
             System.out.println("Password: ");
             String passA = pAInput.nextLine();
@@ -259,18 +297,19 @@ public class netflix2 implements Serializable{
             if (userA.equals(userNameA) && passA.equals(passWordA)){
                 System.out.println("Successfull Login \n");
 
-                Scanner inMenu = new Scanner(System.in);
-                int menu;
+                Scanner input11 = new Scanner(System.in);
+                int c11;
 
                 System.out.println("Choose an action below: \n");
                 System.out.println("(1) Access to Customer Info");
                 System.out.println("(2) See least Rated Movie");
                 System.out.println("(3) Print all movies in order of release date");
                 System.out.println("(4) Go back");
-                System.out.println("(5) Quit");
-                menu = inMenu.nextInt();
+                Scanner inM3 = new Scanner(System.in);
+                int m3;
+                m3 = inM3.nextInt();
 
-                if (menu == 1){
+                if (m3 == 1) {
                     //Acess to Customer Info
                     Scanner keyInput = new Scanner(System.in);
                     System.out.println("Enter key: ");
@@ -278,9 +317,7 @@ public class netflix2 implements Serializable{
                     System.out.println(hash.lookUp(k).getName());
                     System.out.println(hash.lookUp(k).getEmail());
                     System.out.println(hash.lookUp(k).getCCN());
-                }
-
-                else if(menu == 2){
+                } else if (m3 == 2) {
                     System.out.println("The least Rated Movie is:");
                     System.out.println(heap.findMin().getTitle());
 
@@ -288,69 +325,48 @@ public class netflix2 implements Serializable{
                     System.out.println("(1) Yes");
                     System.out.println("(2) No");
 
-                    Scanner inDelete = new Scanner(System.in);
-                    int delete;
-                    delete = inDelete.nextInt();
+                    Scanner input12 = new Scanner(System.in);
+                    int c12;
+                    c12 = input12.nextInt();
 
-                    if(delete == 1){
+                    if (c12 == 1) {
                         //Delete Movie
                         heap.deleteMin();
-                    }
-                    else if(delete == 2){
+                    } else if (c12 == 2) {
                         //Dont Delete
-                        System.out.println("Movie deletion was unsuccessful");
+                        System.out.println("Will not Delete Movie");
                     }
-                }
-
-                else if(menu == 3){
+                } else if (m3 == 3) {
                     bst.traverse();
-                }
-                else if(menu == 4){
+                } else if (m3 == 4) {
                     //Go back
-                    Scanner inBack2 = new Scanner(System.in);
-                    int back2;
+                    // Scanner input11 = new Scanner(System.in);
+                    // int c11;
 
                     System.out.println("Choose an action below: \n");
                     System.out.println("(1) Access to Customer Info");
                     System.out.println("(2) See least Rated Movie");
                     System.out.println("(3) Print all movies in order of release date");
                     System.out.println("(4) Go back");
-                    back2 = inBack2.nextInt();
-                }
-                else if(menu == 5){
-                    //serialize
-                        try {
-                            FileOutputStream fileOut = new FileOutputStream("Admin.txt");
-                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                            out.writeObject(heap); 
-                            out.close();
-                            fileOut.close();
-                            System.out.println("Your file has been serialized!");
-                        }
-                        catch(IOException i) {
-                            i.printStackTrace();
-                        }
-                }
-                else{
+                    c11 = input11.nextInt();
+                } else {
                     System.out.println("Invalid Input. Please Try Again!");
-                }
-            }
 
-            else if (userA.equals(userNameA)) {
+                }
+            } else if (userA.equals(userNameA)) {
                 System.out.println("Invalid password");
                 netflix2.main(args);
-             } 
-
-            else if (passA.equals(passWordA)) {
+            } else if (passA.equals(passWordA)) {
                 System.out.println("Invalid username");
                 netflix2.main(args);
-            } 
-        
-            else {
+            } else {
                 System.out.println("Invalid username and password");
                 netflix2.main(args);
             }
 
+
+        } else {
+            System.out.println("Invalid Input. Please Try Again!");
         }
     }
 }

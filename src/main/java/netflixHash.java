@@ -3,7 +3,7 @@ import java.util.Objects;
 
 
 public class netflixHash implements Serializable {
-    customerNode []s = new customerNode [7]; //creates max size array
+    final customerNode[] s = new customerNode[7]; //creates max size array
     private int n; //declaring variable to act as counter
 
     public netflixHash() {
@@ -22,8 +22,8 @@ public class netflixHash implements Serializable {
                 return s[index];
             }
             else {
-                temp = s[index]; 
-                while (temp == null || temp.getKey() != key) { //while we look up the value that isnt accounted for our first if statement
+                temp = s[index];
+                while (temp == null || temp.getKey() != key) { //while we look up the value that isn't accounted for our first if statement
                     temp = Objects.requireNonNull(temp).getNext();
                 }
             }
@@ -38,7 +38,7 @@ public class netflixHash implements Serializable {
         }
     }
     public void insert(customerNode newcustomerNode) {
-        int index = newcustomerNode.getKey() % 7; //inserts new customerNode in the posotion we want 
+        int index = newcustomerNode.getKey() % 7; //inserts new customerNode in the posotion we want
         n++; //updating counter
         
         if (s[index] == null) { //if there is nothing in HashTable procede to add a new customerNode

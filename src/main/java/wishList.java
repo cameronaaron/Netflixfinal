@@ -5,7 +5,7 @@ public class wishList implements Serializable{
 	//creates 3 different variables as integers, and creates a new array
 	private int n;
 	private int front;
-	movieNode[] q;
+	private final movieNode[] q;
 	private int tail;
 
 	//Constructor for the Queue array, sets n, front, tail all equal to 0 and sets the max size of the array to 100 
