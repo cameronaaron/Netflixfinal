@@ -1,13 +1,16 @@
-import java.util.Scanner; 
 
-public class netflix2 {
+import java.util.Scanner;
+import java.io.*;
+
+
+public class netflix2 implements Serializable{
+
     public static void main(String[] args){
-
-        netflixBST bst = new netflixBST();
         netflixHeap heap = new netflixHeap();
+        netflixBST bst = new netflixBST();
         netflixHash hash = new netflixHash();
-/*
-        movieNode mov1 = new movieNode("Black Panther",20180216, 96);
+
+        movieNode mov1 = new movieNode("Black Panther", 20180216, 96);
         movieNode mov2 = new movieNode("Avengers: Infinity War", 20180427, 84);
         movieNode mov3 = new movieNode("Pacific Rim: Uprising", 20180323, 43);
 
@@ -16,15 +19,14 @@ public class netflix2 {
         bst.insert(mov1);
         bst.insertID(mov1);
         heap.insert(mov1);
+        heap.insert(mov3);
         bst.insert(mov2);
         bst.insertID(mov2);
         heap.insert(mov2);
         bst.insert(mov3);
         bst.insertID(mov3);
-        heap.insert(mov3);
 
         hash.insert(xNode);
-*/
 
         Scanner input1 = new Scanner(System.in);
         int c1;
@@ -45,34 +47,31 @@ public class netflix2 {
 
             if (c2 == 1){
                 System.out.println("Hello New User!");
-                System.out.println("Please Input your Name:");
 
-                Scanner input3 = new Scanner(System.in);
-                String c3;
-                c3 = input3.nextLine();
+                System.out.println("Please Input your Name:");
+                Scanner inName = new Scanner(System.in);
+                String name;
+                name = inName.nextLine();
 
                 
                 System.out.println("Please Input your Credit Card Number:");
-
-                Scanner input4 = new Scanner(System.in);
-                int c4;
-                c4 = input4.nextInt();
+                Scanner inCCN = new Scanner(System.in);
+                int ccn;
+                ccn = inCCN.nextInt();
 
 
                 System.out.println("Please Input your Email Address: ");
+                Scanner inEmail = new Scanner(System.in);
+                String email;
+                email = inEmail.nextLine();
 
-                Scanner input5 = new Scanner(System.in);
-                String c5;
-                c5 = input5.nextLine();
-
-                customerNode yNode = new customerNode(c3, c5, c4);
-                hash.insert(yNode);
+                customerNode customerInfo = new customerNode(name, email, ccn);
+                hash.insert(customerInfo);
 
                 System.out.println("Here is your info!");
-                System.out.println(yNode.getName());
-                System.out.println(yNode.getCCN());
-                System.out.println(yNode.getEmail());
-
+                System.out.println(customerInfo.getName());
+                System.out.println(customerInfo.getCCN());
+                System.out.println(customerInfo.getEmail());
 
                 System.out.println("Choose an action below: \n");
                 System.out.println("(1) Access Movie (by Release Date)");
@@ -83,12 +82,12 @@ public class netflix2 {
                 System.out.println("(6) Quit");
 
 
-                Scanner input6 = new Scanner(System.in);
-                int c6;
-                c6 = input6.nextInt();
+                Scanner inM1 = new Scanner(System.in);
+                int m1;
+                m1 = inM1.nextInt();
 
 
-                if (c6 == 1){
+                if (m1 == 1) {
                     System.out.println("Enter Release Date:");
                     Scanner uInput = new Scanner(System.in);
                     int i;
@@ -98,7 +97,7 @@ public class netflix2 {
                     System.out.println(bst.search(i).getTitle());
                 }
 
-                else if (c6 == 2){
+                else if (m1 == 2){
                     System.out.println("Enter ID: ");
                     Scanner uInput = new Scanner(System.in);
                     int i;
@@ -108,68 +107,125 @@ public class netflix2 {
                     System.out.println(bst.searchID(i).getTitle());
                 }
 
-                else if (c6 == 3){
+                else if (m1 == 3){
 
                     System.out.println("Access to WishList, Would you Like to:");
                     System.out.println("(1) Add to WishList");
                     System.out.println("(2) Access Next Movie");
 
-                    Scanner input7 = new Scanner(System.in);
-                    int c7;
-                    c7 = input7.nextInt();
+                    Scanner inM2 = new Scanner(System.in);
+                    int m2;
+                    m2 = inM2.nextInt();
 
-                    if (c7 == 1){
+                    if (m2 == 1){
 
                         System.out.println("Adding a New Movie!");
-                        System.out.println("Please Input Title of movie:");
 
-                        Scanner input8 = new Scanner(System.in);
-                        String c8;
-                        c8 = input8.nextLine();
+                        System.out.println("Please Input Title of movie:");
+                        Scanner inTitle = new Scanner(System.in);
+                        String title;
+                        title = inTitle.nextLine();
 
                         System.out.println("Please Input Release Date of movie:");
-
-                        Scanner input9 = new Scanner(System.in);
-                        int c9;
-                        c9 = input9.nextInt();
+                        Scanner inRD = new Scanner(System.in);
+                        int rd;
+                        rd = inRD.nextInt();
 
                         System.out.println("Please Input the Popularity Score:");
+                        Scanner inPop = new Scanner(System.in);
+                        int pop;
+                        pop = inPop.nextInt();
 
-                        Scanner input10 = new Scanner(System.in);
-                        int c10;
-                        c10 = input10.nextInt();
+                        movieNode movieInfo = new movieNode(title, rd, pop);
 
-                        movieNode mov4 = new movieNode(c8, c9, c10);
-
-                        bst.insert(mov4);
-                        bst.insertID(mov4);
-                        heap.insert(mov4);
+                        bst.insert(movieInfo);
+                        bst.insertID(movieInfo);
+                        heap.insert(movieInfo);
 
                         // System.out.println(bst.insert(mov4));
                         // System.out.println(bst.insertID(mov4));
                         // System.out.println(heap.insert(mov4));
 
-
                     }
+                    else if (m2 == 2){
+                    System.out.println("Enter ID: ");
+                    Scanner uInput = new Scanner(System.in);
+                    int i;
+
+                    i = uInput.nextInt();
+                    System.out.println("The movie with ID " + i + " is: ");
+                    System.out.println(bst.searchID(i).getTitle());
+                    }
+                    else if (m2 == 3){
+                        System.out.println("wl");
+                    
+                    }
+                else if (m1 == 4){
+                    System.out.println("print");
+                }
+                else if (m1 == 5){
+                    System.out.println("print");
+                }
+                else if (m1 == 6){
+                    hash = null;
+                    try{
+                        FileInputStream fileIn = new FileInputStream("User.txt");
+                        ObjectInputStream in = new ObjectInputStream(fileIn);
+                        hash = (netflixHash) in.readObject();
+                        in.close();
+                        fileIn.close();
+                        return;
+                    }
+                    catch(IOException i){
+                        i.printStackTrace();
+                        return;
+                    } 
+                  
+                    catch(ClassNotFoundException c) {
+                        System.out.println("Error: Class not found");
+                        c.printStackTrace();
+                        return;
+                    }
+                }
 
                 else{
-                        //Access to Next Movie
+                    //Access to Next Movie
                 }
             }
 
-            else if(c6 == 4){
+            else if(c2 == 4){
                 //Print to Screen all Movies based on Release Date
                 bst.traverse();
             }
 
-            else if(c6 == 5){
+            else if(c2 == 5){
                 //Go Back
+                Scanner inBack = new Scanner(System.in);
+                int back;
+                System.out.println("Choose an action below: \n");
+                System.out.println("(1) Access to Customer Info");
+                System.out.println("(2) See least Rated Movie");
+                System.out.println("(3) Print all movies in order of release date");
+                System.out.println("(4) Go back");
+                back = inBack.nextInt();
             }
-
-            else{
-                    System.out.println("Invalid Input. Please Try Again!");
-            }       
-
+            else if(c2 == 6){
+                //seriaize
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("User.txt");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(hash);
+                    out.close();
+                    fileOut.close();
+                    System.out.println("Your file has been serialized!");
+                }
+                catch(IOException i) {
+                    i.printStackTrace();
+                }
+            }
+            //else{
+            //    System.out.println("Invaild Input. Please Try Again!");
+            //}       
 
             }
 
@@ -187,7 +243,7 @@ public class netflix2 {
         }
 
         else if(c1 == 2){
-            System.out.println("HI Admin! \n");
+            System.out.println("Hi Admin! \n");
 
             String userNameA = "admin321";
             String passWordA = "321";
@@ -203,17 +259,18 @@ public class netflix2 {
             if (userA.equals(userNameA) && passA.equals(passWordA)){
                 System.out.println("Successfull Login \n");
 
-                Scanner input11 = new Scanner(System.in);
-                int c11;
+                Scanner inMenu = new Scanner(System.in);
+                int menu;
 
                 System.out.println("Choose an action below: \n");
                 System.out.println("(1) Access to Customer Info");
                 System.out.println("(2) See least Rated Movie");
                 System.out.println("(3) Print all movies in order of release date");
                 System.out.println("(4) Go back");
-                c11 = input11.nextInt();
+                System.out.println("(5) Quit");
+                menu = inMenu.nextInt();
 
-                if (c11 == 1){
+                if (menu == 1){
                     //Acess to Customer Info
                     Scanner keyInput = new Scanner(System.in);
                     System.out.println("Enter key: ");
@@ -223,7 +280,7 @@ public class netflix2 {
                     System.out.println(hash.lookUp(k).getCCN());
                 }
 
-                else if(c11 == 2){
+                else if(menu == 2){
                     System.out.println("The least Rated Movie is:");
                     System.out.println(heap.findMin().getTitle());
 
@@ -231,39 +288,51 @@ public class netflix2 {
                     System.out.println("(1) Yes");
                     System.out.println("(2) No");
 
-                    Scanner input12 = new Scanner(System.in);
-                    int c12;
-                    c12 = input12.nextInt();
+                    Scanner inDelete = new Scanner(System.in);
+                    int delete;
+                    delete = inDelete.nextInt();
 
-                    if(c12 == 1){
+                    if(delete == 1){
                         //Delete Movie
                         heap.deleteMin();
                     }
-                    else if(c12 == 2){
+                    else if(delete == 2){
                         //Dont Delete
                         System.out.println("Movie deletion was unsuccessful");
                     }
                 }
 
-                else if(c11 == 3){
+                else if(menu == 3){
                     bst.traverse();
                 }
-                else if(c11 == 4){
+                else if(menu == 4){
                     //Go back
-                    // Scanner input11 = new Scanner(System.in);
-                    // int c11;
+                    Scanner inBack2 = new Scanner(System.in);
+                    int back2;
 
                     System.out.println("Choose an action below: \n");
                     System.out.println("(1) Access to Customer Info");
                     System.out.println("(2) See least Rated Movie");
                     System.out.println("(3) Print all movies in order of release date");
                     System.out.println("(4) Go back");
-                    c11 = input11.nextInt();
+                    back2 = inBack2.nextInt();
                 }
-
+                else if(menu == 5){
+                    //serialize
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("Admin.txt");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(heap); 
+                            out.close();
+                            fileOut.close();
+                            System.out.println("Your file has been serialized!");
+                        }
+                        catch(IOException i) {
+                            i.printStackTrace();
+                        }
+                }
                 else{
                     System.out.println("Invalid Input. Please Try Again!");
-
                 }
             }
 
