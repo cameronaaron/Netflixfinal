@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.io.*;
 
 public class netflixBST implements Serializable{
 
@@ -12,12 +11,7 @@ public class netflixBST implements Serializable{
     }
 
     public Boolean isEmptyTree(){
-        if(root == null){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return root == null;
     }
 
     public void printTree() {
@@ -144,12 +138,7 @@ public void delete(movieNode p){
     }
 
    public Boolean isEmptyTreeID(){
-        if(root2 == null){
-            return true;
-        }
-        else{
-            return false;
-        }
+       return root2 == null;
     }
 
     public void printTreeID() {

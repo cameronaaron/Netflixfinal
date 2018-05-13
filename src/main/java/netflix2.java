@@ -73,6 +73,7 @@ public class netflix2 {
                 System.out.println(yNode.getCCN());
                 System.out.println(yNode.getEmail());
 
+
                 System.out.println("Choose an action below: \n");
                 System.out.println("(1) Access Movie (by Release Date)");
                 System.out.println("(2) Access Movie(by ID)");
@@ -152,7 +153,7 @@ public class netflix2 {
                     }
 
                 else{
-                    //Acess to Next Movie
+                        //Access to Next Movie
                 }
             }
 

@@ -1,4 +1,4 @@
-import java.io.*;
+import java.io.Serializable;
 
 public class Database implements Serializable{
 	public netflixBST bst;
@@ -14,7 +14,7 @@ public class Database implements Serializable{
 		wishlist = new wishList();
 	}
 
-	public customerNode acessCustomerRecord(int i) {
+    public customerNode accessCustomerRecord(int i) {
 		return hash.lookUp(i);
 	}
 	public movieNode seeLeastRMovie() {

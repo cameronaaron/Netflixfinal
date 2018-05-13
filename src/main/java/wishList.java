@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.io.*;
 
 public class wishList implements Serializable{
 
@@ -58,12 +57,7 @@ public class wishList implements Serializable{
 
     //Boolean function which returns true or false depending if the queue is empty or not
 	public Boolean isEmpty(){
-		if (n==0){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return n == 0;
 	}
 }
 

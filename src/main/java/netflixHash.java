@@ -1,5 +1,5 @@
 import java.io.Serializable;
-import java.io.*;
+import java.util.Objects;
 
 
 public class netflixHash implements Serializable {
@@ -24,7 +24,7 @@ public class netflixHash implements Serializable {
             else {
                 temp = s[index]; 
                 while (temp == null || temp.getKey() != key) { //while we look up the value that isnt accounted for our first if statement
-                    temp=temp.getNext();
+                    temp = Objects.requireNonNull(temp).getNext();
                 }
             }
             if (temp == null) { //different case if temp is null
@@ -81,7 +81,7 @@ public class netflixHash implements Serializable {
                     n++;
                 }
                 else {
-                    temp2.setNext(temp.getNext());
+                    Objects.requireNonNull(temp2).setNext(temp.getNext());
                 }
             }
         }
