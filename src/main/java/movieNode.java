@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.io.*;
 
 public class movieNode implements Serializable {
 
@@ -6,14 +7,16 @@ public class movieNode implements Serializable {
     private String title;
     private int rDate;
     private int popScore;
+    private int uniqID;
     private movieNode rightReleaseD;
     private movieNode leftReleaseD;
     private movieNode rightID;
     private movieNode leftID;
+    private boolean avail;
 
 
     /// A constructor method which takes 4 parameters/
-    public movieNode(String title, int rDate, int popScore) {
+    public movieNode(String title, int rDate, int popScore, boolean avail) {
         this.title = title;
         this.rDate = rDate;
         this.popScore = popScore;
@@ -21,6 +24,7 @@ public class movieNode implements Serializable {
         this.leftID = leftID;
         this.leftReleaseD = leftReleaseD;
         this.rightReleaseD = rightReleaseD;
+        this.avail = avail;
 
     }
 
@@ -46,7 +50,7 @@ public class movieNode implements Serializable {
     }
 
     public void setUniqID(int uniqID) {
-        int uniqID1 = uniqID;
+        this.uniqID = uniqID;
     }
 
     public int getPopScore() {
@@ -98,12 +102,19 @@ public class movieNode implements Serializable {
     }
     }
     public movieNode findSuccessorID(){
-    // used on BST to find the successor on the delete function
-    if (leftID==null){
-        return this;
+        // used on BST to find the successor on the delete function
+        if (leftID==null){
+            return this;
+            }
+        else{
+            return leftID.findSuccessorID();
         }
-    else{
-        return leftID.findSuccessorID();
     }
+     public void setAvail(boolean avail){
+        this.avail = avail;
+     }
+     public boolean getAvail(){
+        return avail;
+     }
 
-}}
+}

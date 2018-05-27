@@ -1,24 +1,39 @@
+/* Programners: Alex Saucedo, Nelia Arnaud, Michele Davila, Cameron Aaron
+   Date: May 16, 2018
+   Final Prject
+*/
+
+   
+//imported java packages(scanner used to identify user import and * import serelization) 
 import java.io.Serializable;
+import java.io.*;
 
 public class netflixBST implements Serializable{
-
+    //Create Universal instance variables
     private movieNode root;
     private movieNode root2;
 
+    //Two roots since it is a double BST
     public netflixBST(){
         root = null;
         root2 = null;
     }
-
+    //Checks to see if tree for release date is empty or not
     public Boolean isEmptyTree(){
-        return root == null;
+        if(root == null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
+    //Prints tree with release date
     public void printTree() {
     printTree2(root);
     System.out.println();
     }
-
+    //Helper method for printtree
     private void printTree2(movieNode tree) {
     if (tree != null) {
         System.out.print(tree.getRDate() + " ");
@@ -35,6 +50,7 @@ public class netflixBST implements Serializable{
     }
     }
 
+    //Inserts new movie to release date BST 
     public void insert(movieNode x){
         if (root == null){
             root = x;
@@ -43,7 +59,7 @@ public class netflixBST implements Serializable{
             insert2(root, x);
         }
     }
-
+    //Help method for insert
     public void insert2(movieNode r, movieNode x){
         if(x.getRDate() < r.getRDate()){
             if(r.getLeftReleaseD() == null){
@@ -63,11 +79,11 @@ public class netflixBST implements Serializable{
         }
     }
     
-    
+    //Traverses release date BST
     public void traverse(){
     traverser(root);
     }
-
+    //Helper method for traverse
     public void traverser(movieNode x){
     if(x != null){
         traverser(x.getLeftReleaseD());
@@ -75,12 +91,12 @@ public class netflixBST implements Serializable{
         traverser(x.getRightReleaseD());
     }
     }
-    
+    //Searchs for node in release date BST
     public movieNode search(int key){
     return searchr(root, key);
 
     }
-
+    //Helper method for bst
     public movieNode searchr(movieNode x, int key){
     if(x == null){
         return x;
@@ -95,13 +111,14 @@ public class netflixBST implements Serializable{
         return searchr(x.getRightReleaseD(), key);
     }
     }
-
+//Deletes movie from release date bst
 public void delete(movieNode p){
         // Removes the node p from the tree
         if (root!=null){// if the tree is not empty calls delete2
             delete2(root,p);
         }
     }
+    //Helper method for delete
     public movieNode delete2(movieNode parent, movieNode p){
         //called on delete to recursively delete the node p
         if (parent==null){// if the Node being passes is null returns null
@@ -136,16 +153,21 @@ public void delete(movieNode p){
         
         return null; 
     }
-
+    //Checks to see if ID bst is empty
    public Boolean isEmptyTreeID(){
-       return root2 == null;
+        if(root2 == null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
-
+    //Prints movies with ID
     public void printTreeID() {
     printTree2ID(root2);
     System.out.println();
     }
-
+    //helper method for print method
     private void printTree2ID(movieNode tree) {
     if (tree != null) {
         System.out.print(tree.getUniqID() + " ");
@@ -161,7 +183,7 @@ public void delete(movieNode p){
         printTree2ID(tree.getRightID());
     }
     }
-
+    //Inserts new movie to ID bst
     public void insertID(movieNode x){
         if (root2 == null){
             root2 = x;
@@ -170,7 +192,7 @@ public void delete(movieNode p){
             insert2ID(root2, x);
         }
     }
-
+    //Helper Method for insert 
     public void insert2ID(movieNode r, movieNode x){
         if(x.getUniqID() < r.getUniqID()){
             if(r.getLeftID() == null){
@@ -190,7 +212,7 @@ public void delete(movieNode p){
         }
     }
     
-    
+    //Travserse bst for ID
     public void traverseID(){
     traverserID(root);
     }
@@ -202,7 +224,7 @@ public void delete(movieNode p){
         traverser(x.getRightID());
     }
     }
-    
+    //Searches movie in BST using ID
     public movieNode searchID(int key){
     return searchrID(root2, key);
 
@@ -222,7 +244,7 @@ public void delete(movieNode p){
         return searchrID(x.getRightID(), key);
     }
     }
-
+//Deletes movie from ID bst
 public void deleteID(movieNode p){
         // Removes the node p from the tree
         if (root2!=null){// if the tree is not empty calls delete2

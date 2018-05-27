@@ -16,13 +16,7 @@ public class customerNode implements Serializable {
 		ccn = ccn0;
 
 		
-		//customerNode []wishList = new customerNode [20];
-		
- 		next = null;
-		/*
-		right = null;
-		left = null; 
-		*/
+		wishList = new wishList();		
 	}
 	
 	public void setName(String name0) {
@@ -48,7 +42,7 @@ public class customerNode implements Serializable {
 	public int getCCN() {
 		return ccn;
 	}
-	
+	//uses credit card number as key, convinient for our bst 
 	public int getKey() {
 		return (this.ccn%10000);
 	}
@@ -60,24 +54,13 @@ public class customerNode implements Serializable {
 	public customerNode getNext() {
 		return next;
 	}
-	// public void setWishList(wishList wishList0){
-	// 	wishList = wishList0;
-	// }
-	/*
-	public void setRight(Node right0) {
-		right = right0;
-	}
+	public void setWishList(wishList wishList0){
+		wishList = wishList0;
+	 }
+	 //stored in node to link customer info and movies
+	 public wishList getWishList(){
+	 	return wishList;
+	 }
 	
-	public Node getRight() {
-		return right;
-	}
 	
-	public void setLeft(Node left0) {
-		left = left0;
-	}
-	
-	public Node getLeft() {
-		return left;
-	}
- */
 }
